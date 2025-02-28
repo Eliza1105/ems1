@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:fragment="empoloyer" class="container mt-5 col py-3">
+            <h1>Employee filtering</h1>
+
+            <form th:action="@{/filter}" th:method="post">
+                <div class="form-group">
+                    <label for="name">By name:</label>
+                    <input type="text" id="name" name="name" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">filtering</button>
+            </form>
+
+            <form th:action="@{/filter2}" th:method="post">
+                <div class="form-group">
+                    <label for="status">By status (active/passive):</label>
+                    <input type="text" id="status" name="status" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">filtering</button>
+            </form>
+
+            <form th:action="@{/filter3}" th:method="post">
+                <div class="form-group">
+                    <label for="department">By department:</label>
+                    <input type="text" id="department" name="department" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">filtering</button>
+            </form>
+
+            <form th:action="@{/filter5}" th:method="post">
+                <div class="form-group">
+                    <label for="manager">By manager Name:</label>
+                    <input type="text" id="manager" name="manager" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">filtering</button>
+            </form>
+            <h1>List of our employees</h1>
+            <h2>
+                You can add a new employee
+                <a th:href="@{/createEmployer}" class="delete-link">  here </a>
+
+            </h2>
+            <br>
+            <table>
+                <tr class="head">
+                    <th>Id</th><th>Name</th><th>Status</th><th>Id manager</th><th>Department</th><th>Photo</th><th>Change</th><th>Delete</th>
+                </tr>
+
+                <tbody>
+                <tr th:each="employer: ${employers}">
+                    <td th:text="${employer.id}"></td>
+                    <td th:text="${employer.name}"></td>
+                    <td th:text="${employer.status}"></td>
+                    <td th:text="${employer.department}"></td>
+                    <td th:text="${employer.manager.id}"></td>
+                    <td><img th:src="${employer.link}"></td>
+                    <td> <a th:href="@{/employerSave/{id}(id=${employer.id})}" class="delete-link">Change</a></td>
+                    <td> <a th:href="@{/deleteEmployer/{id}(id=${employer.id})}" class="delete-link">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create employer</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:fragment="createEmployer" class="container mt-5 col py-3">
+            <h1>Register a new employee in the database</h1>
+            <form th:method="POST" th:action="@{/createEmployer}" enctype="multipart/form-data" th:object = "${employer}">
+                <div class="form-group files">
+                    <input type="hidden" id="id" th:field="*{id}" >
+
+                    <div class="lb"><label for="name" class="form-label">Employee name</label>
+                        <input type="text" class="form-control" id="name" name="name" th:value="*{name}"></div>
+                    <br>
+                    <div> <label for="status" class="form-label">Employee status</label>
+                        <input type="text" class="form-control" id="status" name="status" th:value="*{status}"></div>
+                    <br>
+                    <div><label for="department" class="form-label">Employee department</label>
+                        <input type="text" class="form-control" id="department" name="department" th:value="*{department}"></div>
+                    <br>
+                    <div><label for="manager" class="form-label">Employee manager</label>
+                        <input type="text" class="form-control" id="manager" name="manager" th:value="*{manager}"></div>
+                    <br>
+                    <div><label for="image" class="form-label">Employee photo</label>
+                        <input class="form-control" type="file" id="image" multiple="" name="file" th:value="*{link}"></div>
+                    <br>
+                    <div class="mt-3">
+                        <button type="submit" >Add</button>
+                    </div>
+                </div>
+            </form>
+            <div>
+                <a th:href="@{/employerList}" class="delete-link">Back to list of employees</a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

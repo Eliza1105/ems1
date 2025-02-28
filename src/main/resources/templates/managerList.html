@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager List</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:fragment="manager" class="container mt-5 col py-3">
+            <h1>List of our managers</h1>
+            <h2>
+                You can add a new manager
+                <a th:href="@{/createManager}" class="delete-link">  here </a>
+
+            </h2>
+            <br>
+            <table>
+                <tr class="head">
+                    <th>Id</th><th>Name</th><th>Department</th><th>Photo</th><th>Delete</th>
+                </tr>
+
+                <tbody>
+                <tr th:each="manager: ${managers}">
+                    <td th:text="${manager.id}"></td>
+                    <td th:text="${manager.name}"></td>
+                    <td th:text="${manager.department}"></td>
+                    <td><img th:src="${manager.link}"></td>
+                    <td> <a th:href="@{/deleteManager/{id}(id=${manager.id})}" class="delete-link">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
