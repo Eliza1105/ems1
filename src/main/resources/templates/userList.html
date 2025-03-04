@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:fragment="user" class="container mt-5 col py-3">
+            <h1>List of our users</h1>
+            <table>
+                <tr class="head">
+                    <th>Id</th><th>Name</th><th>Role</th><th>Change</th><th>Delete</th>
+                </tr>
+
+                <tbody>
+                <tr th:each="user: ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.roles}"></td>
+                    <td> <a th:href="@{/user_save/{id}(id=${user.id})}" class="delete-link">Change</a></td>
+                    <td> <a th:href="@{/delete_user/{id}(id=${user.id})}" class="delete-link">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div>
+            <a th:href="@{/}" class="delete-link">Back to main page</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

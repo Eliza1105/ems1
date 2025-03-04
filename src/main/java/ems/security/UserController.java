@@ -17,7 +17,6 @@ public class UserController {
     private final UserRepository userRepository;
 
     @GetMapping("/userList")
-    @PreAuthorize("hasRole('ADMIN')")
     public String userList(Model model) {
         List<User> users= userRepository.findAll();
         model.addAttribute("users", users);
