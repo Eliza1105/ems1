@@ -8,3 +8,5 @@ public class MVCConfig implements WebMvcConfigurer { // MVC configuration for se
         registry.addViewController("/login").setViewName("login"); // Specifies that a request to /login should display the template "login"
     }
 }
+
+

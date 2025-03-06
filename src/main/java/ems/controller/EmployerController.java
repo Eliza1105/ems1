@@ -5,6 +5,9 @@ import ems.entity.Manager;
 import ems.service.EmployerService;
 import ems.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +25,8 @@ public class EmployerController {
     @Autowired
     private ManagerService managerService;
 
-    @GetMapping(value = "/employerList")
-    public String findAll(Model model){
+    @GetMapping(value = "/employerList",  produces = MediaType.APPLICATION_JSON_VALUE)
+   public String findAll(Model model){
         model.addAttribute("employers", employerService.findAll());
         return "employerList";
     } // Get a list of all workers and display them on the page. Returns the name of the template to display
@@ -71,7 +74,7 @@ public class EmployerController {
         return "employerSave";
     }
     @PostMapping("/employerSave") // Process the employee information update
-    public String updateFood(@ModelAttribute Employer employer,  @RequestParam("file") MultipartFile file,  Model model) {
+    public String updateEmployee(@ModelAttribute Employer employer,  @RequestParam("file") MultipartFile file,  Model model) {
         System.out.println(employer.toString());
         Employer employerDb = employerService.findById(employer.getId()); // Get an existing worker
         System.out.println(employerDb.toString());

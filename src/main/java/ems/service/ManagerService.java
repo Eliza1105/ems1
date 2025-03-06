@@ -25,4 +25,15 @@ public class ManagerService {
     public Manager findById(Integer id){
         return managerRepository.findById(id).get();
     } // Find manager by id. Manager is assumed to exist
+
+
+    //below is the method created for testing the application using RestController and Postman
+
+    public boolean deleteManager(Integer id) {
+        if (managerRepository.existsById(id)) {
+            managerRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

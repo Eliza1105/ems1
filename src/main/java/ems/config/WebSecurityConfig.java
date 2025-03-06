@@ -1,5 +1,4 @@
 package ems.config;
-
 import ems.security.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,3 +71,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     } // Return the UserService instance
 
 }
+

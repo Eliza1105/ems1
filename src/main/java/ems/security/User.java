@@ -2,7 +2,13 @@ package ems.security;
 
 import javax.persistence.*;
 import java.util.Set;
-
+//A class representing a user in the system
+//This class is used to store information about the user, including their username, password, and role.
+ //It is also a JPA entity, which allows interaction with the database.
+ //id: Unique user identifier.
+ //username: Username used for authentication.
+ //password: User password stored in encrypted form.
+ //roles: User role, defining their access rights in the system.
 @Entity
 @Table(name = "usr")
 public class User {
@@ -14,8 +20,6 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
-    //@Column(name = "enable")
-    //private boolean enable;
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role roles ;
@@ -64,3 +68,5 @@ public class User {
                 '}';
     }
 }
+
+
